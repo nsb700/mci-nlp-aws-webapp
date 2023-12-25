@@ -5,6 +5,7 @@ brotlicffi==1.1.0.0
 chardet==5.2.0
 cryptography==41.0.4
 fastapi==0.106.0
+uvicorn
 pandas==2.1.4
 pdf2image==1.16.3
 protobuf==4.25.1
@@ -19,4 +20,3 @@ urllib3_secure_extra==0.1.0
 wordcloud==1.9.3
 poppler==22.12.0
 poppler-data==0.4.12
-uvicorn==0.23.2
