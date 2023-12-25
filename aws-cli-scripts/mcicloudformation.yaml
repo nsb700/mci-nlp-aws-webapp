@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create resources for MCI App
+Resources: 
+  mcis3fladd:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      BucketName: mcis3fladdnsb700
+  mcis3nlpres:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      BucketName: mcis3nlpresnsb700
+  mcisqsq:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: mcisqsqnsb700
+Outputs:
+  opmcis3fladd:
+    Description: Reference to created s3 bucket for file upload
+    Value: !Ref mcis3fladd
+  opmcis3nlpres:
+    Description: Reference to created s3 bucket for nlp result
+    Value: !Ref mcis3nlpres 
+  opmcisqsq:
+    Description: Reference to created sqs queue
+    Value: !Ref mcisqsq

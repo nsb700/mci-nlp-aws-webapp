@@ -1,0 +1,94 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create resources for MCI App
+Resources: 
+  # mcilbdstore:
+  #   Type: AWS::S3::Bucket
+  #   Properties: 
+  #     AccessControl: Private
+  #     BucketName: mcilbdstorensb
+  # mcilbdrole:
+  #   Type: AWS::IAM::Role
+  #   Properties:
+  #     RoleName: mcilbdrolensb
+  #     Path: /
+  #     AssumeRolePolicyDocument:
+  #       Version: "2012-10-17"
+  #       Statement:
+  #         - Effect: Allow
+  #           Principal:
+  #             Service: lambda.amazonaws.com
+  #           Action: 'sts:AssumeRole'
+  #     Policies:
+  #       - 
+  #        PolicyName: mcilbdpolicynsb
+  #        PolicyDocument:
+  #          Version: "2012-10-17"
+  #          Statement:
+  #             - 
+  #               Effect: "Allow"
+  #               Action:
+  #                 - logs:CreateLogGroup
+  #                 - logs:CreateLogStream
+  #                 - logs:PutLogEvents
+  #                 - sqs:ReceiveMessage
+  #                 - sqs:SendMessage
+  #                 - sqs:DeleteMessage
+  #                 - sqs:GetQueueAttributes
+  #               Resource: "*"
+  mcis3fladd:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      BucketName: mcis3fladdnsb700
+      # NotificationConfiguration:
+      #   LambdaConfigurations:
+      #     - Event: 's3:ObjectCreated:*'
+      #       Function: !GetAtt mcilbdfladd.Arn
+  mcis3nlpres:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      BucketName: mcis3nlpresnsb700
+  # mcilbdfladd:
+  #   Type: AWS::Lambda::Function
+  #   Properties:
+  #     Description: Lambda function to trigger when file is uploaded to s3 bucket
+  #     FunctionName: mcilbdfladdnsb
+  #     Handler: mcilbdfladd.lambda_handler
+  #     MemorySize: 128
+  #     Role: !GetAtt mcilbdrole.Arn
+  #     Runtime: python3.10
+  #     Timeout: 10
+  #     Code:
+  #       S3Bucket: !GetAtt mcilbdstore.Arn
+  #       S3Key: mcilbdfladd.zip
+  # mcilbdpermission:
+  #   Type: AWS::Lambda::Permission
+  #   Properties:
+  #     Action: lambda:InvokeFunction
+  #     FunctionName: !GetAtt mcilbdfladd.Arn
+  #     Principal: s3.amazonaws.com
+  #     SourceArn: arn:aws:s3:::mcis3fladdnsb
+  mcisqsq:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: mcisqsqnsb700
+Outputs:
+  # opmcilbdstore:
+  #   Description: Reference to created s3 bucket for lambda storage
+  #   Value: !Ref mcilbdstore
+  # opmcilbdrole:
+  #   Description: Reference to created iam role
+  #   Value: !Ref mcilbdrole
+  # opmcilbdfladd:
+  #   Description: Reference to created lambda function
+  #   Value: !Ref mcilbdfladd
+  opmcis3fladd:
+    Description: Reference to created s3 bucket for file upload
+    Value: !Ref mcis3fladd
+  opmcis3nlpres:
+    Description: Reference to created s3 bucket for nlp result
+    Value: !Ref mcis3nlpres 
+  opmcisqsq:
+    Description: Reference to created sqs queue
+    Value: !Ref mcisqsq
