@@ -27,3 +27,57 @@ At a high level, these are the steps:
 ***
 
 ## Screenshots :-
+AWS Cloudformation Stack
+![](screenshots/01-cloudformation-stacks.png)
+
+AWS Lamda Trigger on S3 Upload
+![Alt text](screenshots/01-lambda-1-trigger-on-s3-upload.png)
+
+AWS Policy for Lambda IAM Role
+![Alt text](screenshots/01-lambda-2-policy-for-iam-role.png)
+
+Web Application FastApi Swagger
+![Alt text](screenshots/02-fastapiswagger.png)
+
+Upload file in Web App
+![Alt text](screenshots/03-upload-in-webapp.png)
+
+File in S3 bucket
+![Alt text](screenshots/04-s3-file-in-bucket.png)
+
+AWS Lambda function code triggered on S3 file upload. File name is sent as a message on SQS queue
+![Alt text](screenshots/04-s3-triggered-lambda-code.png)
+
+AWS Cloudwatch logs after AWS Lambda function executes
+![Alt text](screenshots/05-cloudwatch-logs.png)
+
+Message visible on SQS queue
+![Alt text](screenshots/06-sqs-message-1.png)
+
+![Alt text](screenshots/06-sqs-message-2.png)
+
+Process file in web app. Response contains the name of the NLP result file. Copy this name so as to download in next steps.
+![Alt text](screenshots/07-process-file-in-webapp.png)
+
+NLP Result file created in a separate S3 bucket
+![Alt text](screenshots/08-output-in-separate-s3-bucket.png)
+
+Download NLP result file in web app by pasting its name. 'Downlod file' link is created enabling the download
+![Alt text](screenshots/09-download-nlpresult-in-webapp-1.png)
+
+![Alt text](screenshots/09-download-nlpresult-in-webapp-2.png)
+
+Output file
+![Alt text](screenshots/10-downloaded-nlpresult.png)
+
+Create WordCloud in web app by pasting the name of the NLP result file. Response contains the name of the WordCloud result file. Copy this name so as to download in next step.
+![Alt text](screenshots/11-create-wordcloud-in-webapp.png)
+
+![Alt text](screenshots/12-download-wordcloud-in-webapp-1.png)
+
+![Alt text](screenshots/12-download-wordcloud-in-webapp-2.png)
+
+WordCloud
+![Alt text](screenshots/13-wordcloud.png)
+
+***
